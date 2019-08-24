@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -11,6 +12,8 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
   GoogleMapController mapController;
+  PageController pageController;
+  int pageIndex = 0;
 
   final LatLng _center = const LatLng(45.521563, -122.677433);
 
@@ -45,12 +48,30 @@ class _HomeViewState extends State<HomeView> {
         .listen((IosNotificationSettings settings) {
       print('Settings registered: $settings');
     });
+
+    pageController = PageController();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
+      bottomNavigationBar: CupertinoTabBar(
+        currentIndex: pageIndex,
+        onTap: onTap,
+        activeColor: Theme.of(context).primaryColor,
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.whatshot)),
+          BottomNavigationBarItem(icon: Icon(Icons.notifications_active)),
+          // BottomNavigationBarItem(
+          //     icon: Icon(
+          //   Icons.photo_camera,
+          //   size: 35.0,
+          // )),
+          // BottomNavigationBarItem(icon: Icon(Icons.search)),
+          // BottomNavigationBarItem(icon: Icon(Icons.account_circle)),
+        ],
+      ),
       appBar: AppBar(
         title: Text(
           'Denver Happy Hour',
@@ -74,73 +95,99 @@ class _HomeViewState extends State<HomeView> {
         onPressed: () => print('Floating action button....'),
         child: Icon(Icons.add),
       ),
-      body: Column(
+      // body: _buildMapView(),
+      body: PageView(
+        controller: pageController,
+        onPageChanged: onPageChanged,
         children: <Widget>[
-          _buildMap(),
-          Expanded(
-            child: ListView(
-              children: <Widget>[
-                Card(
-                  child: ListTile(
-                    leading: Icon(Icons.fastfood, size: 28,),
-                    title: Text('Donny\'s'),
-                    subtitle: Text('Drinks and food'),
-                    trailing: Icon(Icons.more_vert),
-                  ),
-                ),
-                Card(
-                  child: ListTile(
-                    leading: Icon(Icons.fastfood, size: 28,),
-                    title: Text('Donny\'s'),
-                    subtitle: Text('Drinks and food'),
-                    trailing: Icon(Icons.more_vert),
-                  ),
-                ),
-                Card(
-                  child: ListTile(
-                    leading: Icon(Icons.fastfood, size: 28,),
-                    title: Text('Donny\'s'),
-                    subtitle: Text('Drinks and food'),
-                    trailing: Icon(Icons.more_vert),
-                  ),
-                ),
-                Card(
-                  child: ListTile(
-                    leading: Icon(Icons.fastfood, size: 28,),
-                    title: Text('Donny\'s'),
-                    subtitle: Text('Drinks and food'),
-                    trailing: Icon(Icons.more_vert),
-                  ),
-                ),
-                Card(
-                  child: ListTile(
-                    leading: Icon(Icons.fastfood, size: 28,),
-                    title: Text('Donny\'s'),
-                    subtitle: Text('Drinks and food'),
-                    trailing: Icon(Icons.more_vert),
-                  ),
-                ),
-                Card(
-                  child: ListTile(
-                    leading: Icon(Icons.fastfood, size: 28,),
-                    title: Text('Donny\'s'),
-                    subtitle: Text('Drinks and food'),
-                    trailing: Icon(Icons.more_vert),
-                  ),
-                ),
-                Card(
-                  child: ListTile(
-                    leading: Icon(Icons.fastfood, size: 28,),
-                    title: Text('Donny\'s'),
-                    subtitle: Text('Drinks and food'),
-                    trailing: Icon(Icons.more_vert),
-                  ),
-                ),
-              ],
-            ),
-          ),
+          _buildMapView(),
         ],
       ),
+    );
+  }
+
+  onPageChanged(int pageIndex) {
+    setState(() {
+      this.pageIndex = pageIndex;
+    });
+  }
+
+  onTap(int pageIndex) {
+    print(pageIndex);
+    pageController.animateToPage(
+      pageIndex,
+      duration: Duration(milliseconds: 200),
+      curve: Curves.easeInOut,
+    );
+  }
+
+  Column _buildMapView() {
+    return Column(
+      children: <Widget>[
+        _buildMap(),
+        Expanded(
+          child: ListView(
+            children: <Widget>[
+              Card(
+                child: ListTile(
+                  leading: Icon(Icons.fastfood, size: 28,),
+                  title: Text('Donny\'s'),
+                  subtitle: Text('Drinks and food'),
+                  trailing: Icon(Icons.more_vert),
+                ),
+              ),
+              Card(
+                child: ListTile(
+                  leading: Icon(Icons.fastfood, size: 28,),
+                  title: Text('Donny\'s'),
+                  subtitle: Text('Drinks and food'),
+                  trailing: Icon(Icons.more_vert),
+                ),
+              ),
+              Card(
+                child: ListTile(
+                  leading: Icon(Icons.fastfood, size: 28,),
+                  title: Text('Donny\'s'),
+                  subtitle: Text('Drinks and food'),
+                  trailing: Icon(Icons.more_vert),
+                ),
+              ),
+              Card(
+                child: ListTile(
+                  leading: Icon(Icons.fastfood, size: 28,),
+                  title: Text('Donny\'s'),
+                  subtitle: Text('Drinks and food'),
+                  trailing: Icon(Icons.more_vert),
+                ),
+              ),
+              Card(
+                child: ListTile(
+                  leading: Icon(Icons.fastfood, size: 28,),
+                  title: Text('Donny\'s'),
+                  subtitle: Text('Drinks and food'),
+                  trailing: Icon(Icons.more_vert),
+                ),
+              ),
+              Card(
+                child: ListTile(
+                  leading: Icon(Icons.fastfood, size: 28,),
+                  title: Text('Donny\'s'),
+                  subtitle: Text('Drinks and food'),
+                  trailing: Icon(Icons.more_vert),
+                ),
+              ),
+              Card(
+                child: ListTile(
+                  leading: Icon(Icons.fastfood, size: 28,),
+                  title: Text('Donny\'s'),
+                  subtitle: Text('Drinks and food'),
+                  trailing: Icon(Icons.more_vert),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 
