@@ -70,6 +70,10 @@ class _HomeViewState extends State<HomeView> {
           children: <Widget>[Text('test')],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => print('Floating action button....'),
+        child: Icon(Icons.add),
+      ),
       body: Column(
         children: <Widget>[
           _buildMap(),
