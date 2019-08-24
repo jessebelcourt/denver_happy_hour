@@ -14,6 +14,10 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        primaryColor: Colors.red,
+        accentColor: Colors.purple,
+      ),
       initialRoute: '/',
       routes: <String, WidgetBuilder>{
         '/': (BuildContext context) => HomeView(),

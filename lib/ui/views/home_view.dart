@@ -18,6 +18,8 @@ class _HomeViewState extends State<HomeView> {
     mapController = controller;
   }
 
+  GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
+
   @override
   void initState() {
     super.initState();
@@ -48,10 +50,100 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldKey,
       appBar: AppBar(
-        title: Text('Denver Happy Hour'),
+        title: Text(
+          'Denver Happy Hour',
+          style: TextStyle(),
+        ),
+        leading: IconButton(
+          onPressed: () {
+            scaffoldKey.currentState.openDrawer();
+          },
+          iconSize: 40,
+          color: Colors.white,
+          icon: Icon(Icons.menu),
+        ),
       ),
-      body: GoogleMap(
+      drawer: Drawer(
+        child: Column(
+          children: <Widget>[Text('test')],
+        ),
+      ),
+      body: Column(
+        children: <Widget>[
+          _buildMap(),
+          Expanded(
+            child: ListView(
+              children: <Widget>[
+                Card(
+                  child: ListTile(
+                    leading: Icon(Icons.fastfood, size: 28,),
+                    title: Text('Donny\'s'),
+                    subtitle: Text('Drinks and food'),
+                    trailing: Icon(Icons.more_vert),
+                  ),
+                ),
+                Card(
+                  child: ListTile(
+                    leading: Icon(Icons.fastfood, size: 28,),
+                    title: Text('Donny\'s'),
+                    subtitle: Text('Drinks and food'),
+                    trailing: Icon(Icons.more_vert),
+                  ),
+                ),
+                Card(
+                  child: ListTile(
+                    leading: Icon(Icons.fastfood, size: 28,),
+                    title: Text('Donny\'s'),
+                    subtitle: Text('Drinks and food'),
+                    trailing: Icon(Icons.more_vert),
+                  ),
+                ),
+                Card(
+                  child: ListTile(
+                    leading: Icon(Icons.fastfood, size: 28,),
+                    title: Text('Donny\'s'),
+                    subtitle: Text('Drinks and food'),
+                    trailing: Icon(Icons.more_vert),
+                  ),
+                ),
+                Card(
+                  child: ListTile(
+                    leading: Icon(Icons.fastfood, size: 28,),
+                    title: Text('Donny\'s'),
+                    subtitle: Text('Drinks and food'),
+                    trailing: Icon(Icons.more_vert),
+                  ),
+                ),
+                Card(
+                  child: ListTile(
+                    leading: Icon(Icons.fastfood, size: 28,),
+                    title: Text('Donny\'s'),
+                    subtitle: Text('Drinks and food'),
+                    trailing: Icon(Icons.more_vert),
+                  ),
+                ),
+                Card(
+                  child: ListTile(
+                    leading: Icon(Icons.fastfood, size: 28,),
+                    title: Text('Donny\'s'),
+                    subtitle: Text('Drinks and food'),
+                    trailing: Icon(Icons.more_vert),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Container _buildMap() {
+    return Container(
+      height: 300,
+      child: GoogleMap(
         onMapCreated: _onMapCreated,
         initialCameraPosition: CameraPosition(
           target: _center,
