@@ -21,6 +21,7 @@ class _AppState extends State<App> {
       initialRoute: '/',
       routes: <String, WidgetBuilder>{
         '/': (BuildContext context) => HomeView(),
+        //Add route for "Add Menu Here"
       },
     );
   }
