@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
+import 'package:denver_happy_hour/ui/components/drawer.dart';
+
 class HomeView extends StatefulWidget {
   HomeView();
 
@@ -21,7 +23,7 @@ class _HomeViewState extends State<HomeView> {
     mapController = controller;
   }
 
-  GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
@@ -55,7 +57,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: scaffoldKey,
+      key: _scaffoldKey,
       bottomNavigationBar: CupertinoTabBar(
         currentIndex: pageIndex,
         onTap: onTap,
@@ -79,18 +81,14 @@ class _HomeViewState extends State<HomeView> {
         ),
         leading: IconButton(
           onPressed: () {
-            scaffoldKey.currentState.openDrawer();
+            _scaffoldKey.currentState.openDrawer();
           },
           iconSize: 40,
           color: Colors.white,
           icon: Icon(Icons.menu),
         ),
       ),
-      drawer: Drawer(
-        child: Column(
-          children: <Widget>[Text('test')],
-        ),
-      ),
+      drawer: CustomerDrawer(),
       floatingActionButton: FloatingActionButton(
         onPressed: () => print('Floating action button....'),
         child: Icon(Icons.add),
