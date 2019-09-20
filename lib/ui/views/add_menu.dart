@@ -10,7 +10,13 @@ class _AddMenuViewState extends State<AddMenuView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(child: Text('add menu'))
-    );
+        body: Container(
+          child: RaisedButton(
+            child: Text('Add Menu'),
+            onPressed: () {
+              print('Test button');
+            },
+      ),
+    ));
   }
 }
