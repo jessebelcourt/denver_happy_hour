@@ -9,8 +9,25 @@ class AddMenuView extends StatefulWidget {
 class _AddMenuViewState extends State<AddMenuView> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(child: Text('add menu'))
-    );
+    return (Column(children: <Widget>[
+      RaisedButton(
+        child: Text('Return'),
+        onPressed: () {
+          Navigator.pop(context);
+        },
+      ),
+      RaisedButton(
+        child: Text('Return'),
+        onPressed: () {
+          Navigator.pop(context);
+        },
+      ),
+      RaisedButton(
+        child: Text('Return'),
+        onPressed: () {
+          Navigator.pop(context);
+        },
+      ),
+    ]);
   }
 }
