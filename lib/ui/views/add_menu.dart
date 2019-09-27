@@ -31,19 +31,19 @@ class _AddMenuViewState extends State<AddMenuView> {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-              ),
-              RaisedButton(
+              ),             
+              RaisedButton( //Maybe use a Carosel for days of week here?            
                 color: Colors.blue,
                 textColor: Colors.white,
-                child: Text('Add Menu Photo'),
+                child: Text('Days of week Happy Hour Available'),
                 onPressed: () {
                   //Navigate to upload photo
                 },
               ),
-              RaisedButton(
+               RaisedButton(
                 color: Colors.blue,
                 textColor: Colors.white,
-                child: Text('Days of week Happy Hour Available'),
+                child: Text('Add Menu Photo'),
                 onPressed: () {
                   //Navigate to upload photo
                 },
