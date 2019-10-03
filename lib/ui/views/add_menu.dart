@@ -25,14 +25,14 @@ class _AddMenuViewState extends State<AddMenuView> {
             // child: Text('Restaurant Name Input Field'),
           ),
           DaysOfWeek(),
-          // RaisedButton( 
-          //   color: Colors.blue,
-          //   textColor: Colors.white,
-          //   child: Text('Happy Hour Hours'),   //Clock Carousel Widget will go here//
-          //   onPressed: () {
-          //     Navigator.pop(context);
-          //   },
-          // ),
+          RaisedButton( 
+            color: Colors.blue,
+            textColor: Colors.white,
+            child: Text('Happy Hour Hours'),   //Clock Carousel Widget will go here//
+            onPressed: () {
+              selectTime(context);
+            },
+          ),
           RaisedButton(
             color: Colors.blue,
             textColor: Colors.white,
