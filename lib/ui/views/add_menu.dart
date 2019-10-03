@@ -16,7 +16,7 @@ class _AddMenuViewState extends State<AddMenuView> {
       appBar: AppBar(
         title: Text('Restaurant Info'),
       ),
-      body: Container(        
+      body: Container(
         child: (Column(children: <Widget>[
           TextFormField(
             decoration: InputDecoration(labelText: 'Enter Restaurant Name'),
@@ -24,21 +24,13 @@ class _AddMenuViewState extends State<AddMenuView> {
             // textColor: Colors.white,
             // child: Text('Restaurant Name Input Field'),
           ),
-          RaisedButton(
-            color: Colors.blue,
-            textColor: Colors.white,
-            child: Text('Happy Hour Hours'),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
           DaysOfWeek(),
-          // RaisedButton( //Maybe use a Carosel for days of week here? Horizontal list?
+          // RaisedButton( 
           //   color: Colors.blue,
           //   textColor: Colors.white,
-          //   child: Text('Days of week Happy Hour Available'),
+          //   child: Text('Happy Hour Hours'),   //Clock Carousel Widget will go here//
           //   onPressed: () {
-          //     //Navigate to upload photo
+          //     Navigator.pop(context);
           //   },
           // ),
           RaisedButton(
