@@ -17,12 +17,26 @@ class _DaysOfWeekState extends State<DaysOfWeek> {
     'Sun',
   ]; //How could we instead Map this array into the ListView widget rather than hardcode??
 
-  int _selectedIndex = 0;
+  bool isSelected = false;
+  Color _notSelected = Colors.grey;
+  Color _selectedDay = Colors.red;
 
-  Color selectedDay = Colors.red;
-  Color notSelected = Colors.grey;
+  _isSelected() {
+    setState(() {
+      if(isSelected) {
+        print('Is selected!');
+      } else {
+        print('Is Unselected!');
+      }
+       isSelected = !isSelected;
+    });
+  }
 
-  Color mondayColor = Colors.grey;
+  void _highlightDay() {
+    setState(() {
+      _selectedDay = Colors.blue;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,13 +45,13 @@ class _DaysOfWeekState extends State<DaysOfWeek> {
       height: 40.0,
       child: Row(
         children: <Widget>[
-          _buildExpandedDaySelector('Mon'),
-          _buildExpandedDaySelector('Tue'),
-          _buildExpandedDaySelector('Wed'),
-          _buildExpandedDaySelector('Thur'),
-          _buildExpandedDaySelector('Fri'),
-          _buildExpandedDaySelector('Sat'),
-          _buildExpandedDaySelector('Sun'),
+          _buildExpandedDaySelector(days[0]),
+          _buildExpandedDaySelector(days[1]),
+          _buildExpandedDaySelector(days[2]),
+          _buildExpandedDaySelector(days[3]),
+          _buildExpandedDaySelector(days[4]),
+          _buildExpandedDaySelector(days[5]),
+          _buildExpandedDaySelector(days[6]),
         ],
       ),
     );
@@ -45,9 +59,15 @@ class _DaysOfWeekState extends State<DaysOfWeek> {
 
   Expanded _buildExpandedDaySelector(String day) {
     return Expanded(
-      child: Container(
-        child: Text(day),
-        alignment: Alignment.center,
+      child: new InkWell(
+        onTap: () {
+          _isSelected();
+        },
+        child: new Container(
+          child: new Text(day),
+          color: !isSelected ? _notSelected : _selectedDay,
+          alignment: Alignment.center,
+        ),
       ),
     );
   }

@@ -10,12 +10,12 @@ class _HoursState extends State<Hours> {
 
 TimeOfDay _time = new TimeOfDay.now();
 
-Future<void> _selectTime(BuildContext context) async {
-       final TimeOfDay picked = await showTimePicker(
-        context: context,
-        initialTime: _time,        
-      ),
-    };
+// Future<void> _selectTime(BuildContext context) async {
+//        final TimeOfDay picked = await showTimePicker(
+//         context: context,
+//         initialTime: _time,        
+//       ),
+//     };
 
   @override
   Widget build(BuildContext context) {
