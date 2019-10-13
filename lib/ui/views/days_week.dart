@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import './selectable_widget_model.dart';
+
 class DaysOfWeek extends StatefulWidget {
   DaysOfWeek({Key key}) : super(key: key);
 
@@ -17,24 +19,13 @@ class _DaysOfWeekState extends State<DaysOfWeek> {
     'Sun',
   ]; //How could we instead Map this array into the ListView widget rather than hardcode??
 
-  bool isSelected = false;
-  Color _notSelected = Colors.grey;
-  Color _selectedDay = Colors.red;
+  int _selectedIndex = 0;
 
-  _isSelected() {
-    setState(() {
-      if(isSelected) {
-        print('Is selected!');
-      } else {
-        print('Is Unselected!');
-      }
-       isSelected = !isSelected;
-    });
-  }
+  bool isSelected = false;  //initialize boolean 
 
-  void _highlightDay() {
+  void _isSelected() { //Write function to change boolean to true and change state of boolean. 
     setState(() {
-      _selectedDay = Colors.blue;
+      isSelected = !isSelected; 
     });
   }
 
@@ -42,6 +33,7 @@ class _DaysOfWeekState extends State<DaysOfWeek> {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.all(10.0),
+      color: Colors.grey,
       height: 40.0,
       child: Row(
         children: <Widget>[
@@ -59,16 +51,18 @@ class _DaysOfWeekState extends State<DaysOfWeek> {
 
   Expanded _buildExpandedDaySelector(String day) {
     return Expanded(
-      child: new InkWell(
-        onTap: () {
+      child: InkWell(
+        onTap: () {   //Trigger boolean upon user interaction.
           _isSelected();
         },
-        child: new Container(
-          child: new Text(day),
-          color: !isSelected ? _notSelected : _selectedDay,
+        child: Container(
+          child: Text(day),
+          color: !isSelected ? Colors.grey : Colors.blue,    //If boolean false return grey, else return blue.   
           alignment: Alignment.center,
         ),
       ),
     );
   }
 }
+
+//Next challenge: Figure out how to keep individual state for each index value in days list. 
