@@ -57,7 +57,7 @@ class _DaysOfWeekState extends State<DaysOfWeek> {
         },
         child: Container(
           child: Text(day),
-          color: !isSelected ? Colors.grey : Colors.blue,    //If boolean false return grey, else return blue.   
+          color: !isSelected ? Colors.grey : Colors.blue,    //If boolean false return grey, else blue.   
           alignment: Alignment.center,
         ),
       ),
