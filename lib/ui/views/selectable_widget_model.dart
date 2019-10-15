@@ -1,7 +1,7 @@
 //Create a view model for each selectable Widget
-class SelectableWidget {
+class SelectableWidgetViewModel {
   bool isSelected;
   String day;
 
-  SelectableWidget({this.day, this.isSelected});
+  SelectableWidgetViewModel(this.day, {this.isSelected = false});
 }
