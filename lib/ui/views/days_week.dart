@@ -2,33 +2,20 @@ import 'package:flutter/material.dart';
 
 import './selectable_widget_model.dart';
 
-class DaysOfWeek extends StatefulWidget {
+class SelectableWidget extends StatefulWidget {
   final SelectableWidgetViewModel
       viewModel; //Initialize selectable widget state.
 
-  DaysOfWeek({this.viewModel});
+  SelectableWidget(this.viewModel);
 
-  _DaysOfWeekState createState() => _DaysOfWeekState();
+  _SelectableWidgetState createState() => _SelectableWidgetState();
 }
 
-class _DaysOfWeekState extends State<DaysOfWeek> {
-
+class _SelectableWidgetState extends State<SelectableWidget> {
   @override
   void initState() {
     super.initState();
   }
-  
-  final List<String> days = [
-    'Mon',
-    'Tue',
-    'Wed',
-    'Thu',
-    'Fri',
-    'Sat',
-    'Sun',
-  ]; //How could we instead Map this array into the ListView widget rather than hardcode??
-
-  int _selectedIndex = 0;
 
   // bool isSelected = false; //initialize boolean
   // void _isSelected() {
@@ -46,13 +33,13 @@ class _DaysOfWeekState extends State<DaysOfWeek> {
       height: 40.0,
       child: Row(
         children: <Widget>[
-          _buildExpandedDaySelector(days[0]),
-          _buildExpandedDaySelector(days[1]),
-          _buildExpandedDaySelector(days[2]),
-          _buildExpandedDaySelector(days[3]),
-          _buildExpandedDaySelector(days[4]),
-          _buildExpandedDaySelector(days[5]),
-          _buildExpandedDaySelector(days[6]),
+          _buildExpandedDaySelector('Mon'),
+          _buildExpandedDaySelector('Tue'),
+          _buildExpandedDaySelector('Wed'),
+          _buildExpandedDaySelector('Thu'),
+          _buildExpandedDaySelector('Fri'),
+          _buildExpandedDaySelector('Sat'),
+          _buildExpandedDaySelector('Sun'),
         ],
       ),
     );
@@ -77,12 +64,15 @@ class _DaysOfWeekState extends State<DaysOfWeek> {
         ),
       );
     }
-     InkWell(
-      //Inkwell needs to be encapsulated
-      onTap: () {
-        //Trigger boolean upon user interaction.
-        widget.viewModel.isSelected = !widget.viewModel.isSelected;
-      },
+    return Expanded(
+      child: InkWell(
+        //Inkwell needs to be encapsulated
+        onTap: () {
+          setState(() {
+            widget.viewModel.isSelected = !widget.viewModel.isSelected;
+          }); //Trigger boolean upon user interaction.
+        },
+      ),
     );
   }
 }

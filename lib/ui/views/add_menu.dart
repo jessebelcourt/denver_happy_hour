@@ -1,7 +1,8 @@
+import 'package:denver_happy_hour/ui/views/days_week_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import './days_week.dart';
+import './days_week_view.dart';
 
 class AddMenuView extends StatefulWidget {
   AddMenuView({Key key}) : super(key: key);
@@ -25,7 +26,7 @@ class _AddMenuViewState extends State<AddMenuView> {
             // textColor: Colors.white,
             // child: Text('Restaurant Name Input Field'),
           ),
-          DaysOfWeek(),
+          DaysWeekView(),
           RaisedButton( 
             color: Colors.blue,
             textColor: Colors.white,

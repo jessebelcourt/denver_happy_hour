@@ -3,5 +3,5 @@ class SelectableWidgetViewModel {
   bool isSelected;
   String day;
 
-  SelectableWidgetViewModel(this.day, {this.isSelected = false});
+  SelectableWidgetViewModel({this.day, this.isSelected = false});
 }
