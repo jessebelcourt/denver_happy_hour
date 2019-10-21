@@ -8,7 +8,6 @@ class AddMenuView extends StatefulWidget {
   AddMenuView({Key key}) : super(key: key);
 
   _AddMenuViewState createState() => _AddMenuViewState();
-
 }
 
 class _AddMenuViewState extends State<AddMenuView> {
@@ -27,10 +26,11 @@ class _AddMenuViewState extends State<AddMenuView> {
             // child: Text('Restaurant Name Input Field'),
           ),
           DaysWeekView(),
-          RaisedButton( 
+          RaisedButton(
             color: Colors.blue,
             textColor: Colors.white,
-            child: Text('Happy Hour Hours'),   //Clock Carousel Widget will go here//
+            child:
+                Text('Happy Hour Hours'), //Clock Carousel Widget will go here//
             onPressed: () {
               // selectTime(context);
             },

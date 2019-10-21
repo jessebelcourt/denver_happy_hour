@@ -1,12 +1,12 @@
+import 'package:denver_happy_hour/models/selected_days_model.dart';
 import 'package:flutter/material.dart';
 
 import './selectable_widget_model.dart';
 
 class SelectableWidget extends StatefulWidget {
-  final SelectableWidgetViewModel
-      viewModel; //Initialize selectable widget state.
+  final SelectedDaysModel selectedDays; //Initialize selectable widget state.
 
-  SelectableWidget(this.viewModel);
+  SelectableWidget(this.selectedDays);
 
   _SelectableWidgetState createState() => _SelectableWidgetState();
 }
@@ -46,32 +46,31 @@ class _SelectableWidgetState extends State<SelectableWidget> {
   }
 
   Expanded _buildExpandedDaySelector(String day) {
-    //Create conditional statement. If (widget.viewModel.isSelect = false return one Container else another.)
-    if (widget.viewModel.isSelected) {
-      Expanded(
-        child: Container(
-          child: Text(widget.viewModel.day),
-          color: Colors.blue,
-          alignment: Alignment.center,
-        ),
-      );
-    } else {
-      return Expanded(
-        child: Container(
-          child: Text(widget.viewModel.day),
-          color: Colors.grey, //If boolean false return grey, else blue.
-          alignment: Alignment.center,
-        ),
-      );
+    Color backgroundColor = Colors.grey;
+
+    if (day == 'Mon' && widget.selectedDays.monday) {
+      backgroundColor = Colors.blue;
+    } else if (day == 'Tue' && widget.selectedDays.tuesday) {
+      backgroundColor = Colors.blue;
     }
+
     return Expanded(
-      child: InkWell(
-        //Inkwell needs to be encapsulated
+      child: GestureDetector(
         onTap: () {
           setState(() {
-            widget.viewModel.isSelected = !widget.viewModel.isSelected;
-          }); //Trigger boolean upon user interaction.
+            if (day == 'Mon') {
+              widget.selectedDays.monday = !widget.selectedDays.monday;
+            }
+            if (day == 'Tue') {
+              widget.selectedDays.tuesday = !widget.selectedDays.tuesday;
+            }
+          });
         },
+        child: Container(
+          child: Text(day),
+          color: backgroundColor,
+          alignment: Alignment.center,
+        ),
       ),
     );
   }
