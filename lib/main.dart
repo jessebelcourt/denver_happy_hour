@@ -16,8 +16,8 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primaryColor: Colors.red,
-        accentColor: Colors.purple,
+        primaryColor: Colors.greenAccent,
+        accentColor: Colors.black,
       ),
       initialRoute: '/',
       routes: <String, WidgetBuilder>{
