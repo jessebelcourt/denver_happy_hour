@@ -31,34 +31,34 @@ class _SelectableWidgetState extends State<SelectableWidget> {
       height: 40.0,
       child: Row(
         children: <Widget>[
+          _buildExpandedDaySelector('Sun'),
           _buildExpandedDaySelector('Mon'),
           _buildExpandedDaySelector('Tue'),
           _buildExpandedDaySelector('Wed'),
           _buildExpandedDaySelector('Thu'),
           _buildExpandedDaySelector('Fri'),
           _buildExpandedDaySelector('Sat'),
-          _buildExpandedDaySelector('Sun'),
         ],
       ),
     );
   }
 
   Expanded _buildExpandedDaySelector(String day) {
-    Color backgroundColor = Colors.grey;
+    Color backgroundColor = Colors.red;
 
-    if (day == 'Mon' && widget.selectedDays.monday) {
+    if (day == 'Sun' && widget.selectedDays.monday) {
       backgroundColor = Colors.blue;
-    } else if (day == 'Tue' && widget.selectedDays.tuesday) {
+    } else if (day == 'Mon' && widget.selectedDays.tuesday) {
       backgroundColor = Colors.blue;
-    } else if (day == 'Wed' && widget.selectedDays.wednesday) {
+    } else if (day == 'Tue' && widget.selectedDays.wednesday) {
       backgroundColor = Colors.blue;
-    } else if (day == 'Thu' && widget.selectedDays.thursday) {
+    } else if (day == 'Wed' && widget.selectedDays.thursday) {
       backgroundColor = Colors.blue;
-    } else if (day == 'Fri' && widget.selectedDays.friday) {
+    } else if (day == 'Thu' && widget.selectedDays.friday) {
       backgroundColor = Colors.blue;
-    } else if (day == 'Sat' && widget.selectedDays.saturday) {
+    } else if (day == 'Fri' && widget.selectedDays.saturday) {
       backgroundColor = Colors.blue;
-    } else if (day == 'Sun' && widget.selectedDays.sunday) {
+    } else if (day == 'Sat' && widget.selectedDays.sunday) {
       backgroundColor = Colors.blue;
     }
 
@@ -66,19 +66,19 @@ class _SelectableWidgetState extends State<SelectableWidget> {
       child: GestureDetector(
         onTap: () {
           setState(() {
-            if (day == 'Mon') {
+            if (day == 'Sun') {
               widget.selectedDays.monday = !widget.selectedDays.monday;
-            } else if (day == 'Tue') {
+            } else if (day == 'Mon') {
               widget.selectedDays.tuesday = !widget.selectedDays.tuesday;
-            } else if (day == 'Wed') {
+            } else if (day == 'Tue') {
               widget.selectedDays.wednesday = !widget.selectedDays.wednesday;
-            } else if (day == 'Thu') {
+            } else if (day == 'Wed') {
               widget.selectedDays.thursday = !widget.selectedDays.thursday;
-            } else if (day == 'Fri') {
+            } else if (day == 'Thu') {
               widget.selectedDays.friday = !widget.selectedDays.friday;
-            } else if (day == 'Sat') {
+            } else if (day == 'Fri') {
               widget.selectedDays.saturday = !widget.selectedDays.saturday;
-            } else if (day == 'Sun') {
+            } else if (day == 'Sat') {
               widget.selectedDays.sunday = !widget.selectedDays.sunday;
             }
           });

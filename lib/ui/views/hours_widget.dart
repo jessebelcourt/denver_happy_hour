@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:flutter_time_picker_spinner/flutter_time_picker_spinner.dart';
 
 class DateTimePicker extends StatefulWidget {
   @override
@@ -9,57 +10,79 @@ class DateTimePicker extends StatefulWidget {
 }
 
 class _DateTimePickerState extends State<DateTimePicker> {
-  String _timeOne = 'Not Set';
-  String _timeTwo = 'Not Set';
+  String timeOne = 'Not Set';
+  String timeTwo = 'Not Set';
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(border: Border.all(color: Colors.red)),
       padding: EdgeInsets.all(15.0),
       child: Column(
         children: <Widget>[
           Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              RaisedButton(
-                child: Text('From:'),
-                onPressed: () {
-                  DatePicker.showTimePicker(context,
-                      theme: DatePickerTheme(containerHeight: 210.0),
-                      showTitleActions: true, onConfirm: (time) {
-                    print('confirm $time');
-                    _timeOne = '${time.hour} : ${time.minute}';
-                    setState(() {});
-                  }, currentTime: DateTime.now(), locale: LocaleType.en);
-                },
-              ),
-              Container(
-                child: Text('$_timeOne'),
-              ),
-            ],
-          )),
+              decoration: BoxDecoration(color: Colors.red),
+              child: Padding(
+                padding: const EdgeInsets.all(3.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    RaisedButton(
+                        color: Colors.blue,
+                        child: Text(
+                          'Starts: ',
+                        ),
+                        onPressed: () {
+                          DatePicker.showTimePicker(context,
+                              theme: DatePickerTheme(containerHeight: 200.0),
+                              showTitleActions: true, onConfirm: (time) {
+                            print('confirm $time');
+                            timeOne = '${time.hour} : ${time.minute}';
+                            setState(() {});
+                          },
+                              currentTime: DateTime.now(),
+                              locale: LocaleType.en);
+                        }),
+                    Container(
+                      padding: EdgeInsets.all(15.0),
+                      child: Text(
+                        '$timeOne',
+                        style: TextStyle(fontWeight: FontWeight.w500),
+                      ), //defaultTime = timeOne
+                    ),
+                  ],
+                ),
+              )),
           Container(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                RaisedButton(
-                  child: Text('To:'),
-                  onPressed: () {
-                    DatePicker.showTimePicker(context,
-                        theme: DatePickerTheme(containerHeight: 210.0),
-                        showTitleActions: true, onConfirm: (time) {
-                      print('confirm $time');
-                      _timeTwo = '${time.hour} : ${time.minute}';
-                      setState(() {});
-                    }, currentTime: DateTime.now(), locale: LocaleType.en);
-                  },
-                ),
-                Container(
-                  child: Text('$_timeTwo'),
-                ),
-              ],
+            decoration: BoxDecoration(color: Colors.red),
+            child: Padding(
+              padding: const EdgeInsets.all(3.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  RaisedButton(
+                    color: Colors.blue,
+                    child: Text(
+                      'Ends: ',              
+                    ),
+                    onPressed: () {
+                      DatePicker.showTimePicker(context,
+                          theme: DatePickerTheme(containerHeight: 200.0),
+                          showTitleActions: true, onConfirm: (time) {
+                        print('confirm $time');
+                        timeTwo = '${time.hour} : ${time.minute}';
+                        setState(() {});
+                      }, currentTime: DateTime.now(), locale: LocaleType.en);
+                    },
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(15.0),
+                    child: Text(
+                      '$timeTwo',
+                      style: TextStyle(fontWeight: FontWeight.w500),
+                    ), //defaultTime = timeTwo
+                  ),
+                ],
+              ),
             ),
           )
         ],
@@ -67,3 +90,7 @@ class _DateTimePickerState extends State<DateTimePicker> {
     );
   }
 }
+
+//Issues: 1.) Need to format time in Time Picker.
+//        2.) Encapsulate function, pass timeOne, timeTwo into respective arguments.
+//        3.) Style accordingly

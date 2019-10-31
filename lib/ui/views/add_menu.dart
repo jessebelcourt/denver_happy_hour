@@ -38,7 +38,7 @@ class _AddMenuViewState extends State<AddMenuView> {
           //   },
           // ),
           RaisedButton(
-            color: Colors.blue,
+            color: Colors.red,
             textColor: Colors.white,
             child: Text('Add Menu Photo'),
             onPressed: () {
