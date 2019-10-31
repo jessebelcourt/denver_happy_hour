@@ -20,14 +20,14 @@ class _DateTimePickerState extends State<DateTimePicker> {
       child: Column(
         children: <Widget>[
           Container(
-              decoration: BoxDecoration(color: Colors.red),
+              decoration: BoxDecoration(color: Colors.greenAccent),
               child: Padding(
                 padding: const EdgeInsets.all(3.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     RaisedButton(
-                        color: Colors.blue,
+                        color: Colors.white,
                         child: Text(
                           'Starts: ',
                         ),
@@ -53,14 +53,14 @@ class _DateTimePickerState extends State<DateTimePicker> {
                 ),
               )),
           Container(
-            decoration: BoxDecoration(color: Colors.red),
+            decoration: BoxDecoration(color: Colors.greenAccent),
             child: Padding(
               padding: const EdgeInsets.all(3.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   RaisedButton(
-                    color: Colors.blue,
+                    color: Colors.white,
                     child: Text(
                       'Ends: ',              
                     ),

@@ -44,22 +44,22 @@ class _SelectableWidgetState extends State<SelectableWidget> {
   }
 
   Expanded _buildExpandedDaySelector(String day) {
-    Color backgroundColor = Colors.red;
+    Color backgroundColor = Colors.black;
 
     if (day == 'Sun' && widget.selectedDays.monday) {
-      backgroundColor = Colors.blue;
+      backgroundColor = Colors.greenAccent;
     } else if (day == 'Mon' && widget.selectedDays.tuesday) {
-      backgroundColor = Colors.blue;
+      backgroundColor = Colors.greenAccent;
     } else if (day == 'Tue' && widget.selectedDays.wednesday) {
-      backgroundColor = Colors.blue;
+      backgroundColor = Colors.greenAccent;
     } else if (day == 'Wed' && widget.selectedDays.thursday) {
-      backgroundColor = Colors.blue;
+      backgroundColor = Colors.greenAccent;
     } else if (day == 'Thu' && widget.selectedDays.friday) {
-      backgroundColor = Colors.blue;
+      backgroundColor = Colors.greenAccent;
     } else if (day == 'Fri' && widget.selectedDays.saturday) {
-      backgroundColor = Colors.blue;
+      backgroundColor = Colors.greenAccent;
     } else if (day == 'Sat' && widget.selectedDays.sunday) {
-      backgroundColor = Colors.blue;
+      backgroundColor = Colors.greenAccent;
     }
 
     return Expanded(
@@ -86,7 +86,7 @@ class _SelectableWidgetState extends State<SelectableWidget> {
         child: Container(
           child: Text(
             day,
-            style: TextStyle(fontWeight: FontWeight.w700, fontFamily: 'Times New Roman'),
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontFamily: 'Times New Roman'),
           ),
           color: backgroundColor,
           alignment: Alignment.center,
