@@ -26,8 +26,8 @@ class _SelectableWidgetState extends State<SelectableWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(10.0),
-      color: Colors.grey,
+      margin: EdgeInsets.only(top: 10.0),
+      // color: Colors.grey,
       height: 40.0,
       child: Row(
         children: <Widget>[
@@ -86,7 +86,9 @@ class _SelectableWidgetState extends State<SelectableWidget> {
         child: Container(
           child: Text(
             day,
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontFamily: 'Times New Roman'),
+            style: TextStyle(
+              color: Colors.white,
+            ),
           ),
           color: backgroundColor,
           alignment: Alignment.center,

@@ -16,7 +16,6 @@ class _DateTimePickerState extends State<DateTimePicker> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(15.0),
       child: Column(
         children: <Widget>[
           Container(
@@ -62,7 +61,7 @@ class _DateTimePickerState extends State<DateTimePicker> {
                   RaisedButton(
                     color: Colors.white,
                     child: Text(
-                      'Ends: ',              
+                      'Ends: ',
                     ),
                     onPressed: () {
                       DatePicker.showTimePicker(context,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:denver_happy_hour/ui/views/home_view.dart';
-import 'package:denver_happy_hour/ui/views/add_menu.dart';
+import 'package:denver_happy_hour/ui/views/add_menu_view.dart';
 
 void main() => runApp(App());
 
