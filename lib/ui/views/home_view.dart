@@ -90,7 +90,9 @@ class _HomeViewState extends State<HomeView> {
       ),
       drawer: CustomerDrawer(),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => print('Floating action button....'),
+        onPressed: () {
+          Navigator.pushNamed(context, '/second');
+        },
         child: Icon(Icons.add),
       ),
       // body: _buildMapView(),

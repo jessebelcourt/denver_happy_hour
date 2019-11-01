@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:denver_happy_hour/ui/views/home_view.dart';
+import 'package:denver_happy_hour/ui/views/add_menu.dart';
 
 void main() => runApp(App());
 
@@ -15,12 +16,13 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primaryColor: Colors.red,
-        accentColor: Colors.purple,
+        primaryColor: Colors.greenAccent,
+        accentColor: Colors.black,
       ),
       initialRoute: '/',
       routes: <String, WidgetBuilder>{
         '/': (BuildContext context) => HomeView(),
+        '/second': (context) => AddMenuView(),
       },
     );
   }
