@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
+// import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import 'package:denver_happy_hour/ui/components/drawer.dart';
@@ -12,7 +12,7 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+  // FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
   GoogleMapController mapController;
   PageController pageController;
   int pageIndex = 0;
@@ -28,28 +28,28 @@ class _HomeViewState extends State<HomeView> {
   @override
   void initState() {
     super.initState();
-    _firebaseMessaging.configure(
-      onMessage: (Map<String, dynamic> message) {
-        print('onMessage: $message');
-      },
-      onResume: (Map<String, dynamic> message) {
-        print('onResume: $message');
-      },
-      onLaunch: (Map<String, dynamic> message) {
-        print('onLaunch: $message');
-      },
-    );
-    _firebaseMessaging.getToken().then((token) {
-      print(token);
-    });
+    // _firebaseMessaging.configure(
+    //   onMessage: (Map<String, dynamic> message) {
+    //     print('onMessage: $message');
+    //   },
+    //   onResume: (Map<String, dynamic> message) {
+    //     print('onResume: $message');
+    //   },
+    //   onLaunch: (Map<String, dynamic> message) {
+    //     print('onLaunch: $message');
+    //   },
+    // );
+    // _firebaseMessaging.getToken().then((token) {
+    //   print(token);
+    // });
 
-    _firebaseMessaging.requestNotificationPermissions(
-        const IosNotificationSettings(sound: true, badge: true, alert: true));
+    // _firebaseMessaging.requestNotificationPermissions(
+    //     const IosNotificationSettings(sound: true, badge: true, alert: true));
 
-    _firebaseMessaging.onIosSettingsRegistered
-        .listen((IosNotificationSettings settings) {
-      print('Settings registered: $settings');
-    });
+    // _firebaseMessaging.onIosSettingsRegistered
+    //     .listen((IosNotificationSettings settings) {
+    //   print('Settings registered: $settings');
+    // });
 
     pageController = PageController();
   }
@@ -130,7 +130,10 @@ class _HomeViewState extends State<HomeView> {
             children: <Widget>[
               Card(
                 child: ListTile(
-                  leading: Icon(Icons.fastfood, size: 28,),
+                  leading: Icon(
+                    Icons.fastfood,
+                    size: 28,
+                  ),
                   title: Text('Donny\'s'),
                   subtitle: Text('Drinks and food'),
                   trailing: Icon(Icons.more_vert),
@@ -138,7 +141,10 @@ class _HomeViewState extends State<HomeView> {
               ),
               Card(
                 child: ListTile(
-                  leading: Icon(Icons.fastfood, size: 28,),
+                  leading: Icon(
+                    Icons.fastfood,
+                    size: 28,
+                  ),
                   title: Text('Donny\'s'),
                   subtitle: Text('Drinks and food'),
                   trailing: Icon(Icons.more_vert),
@@ -146,7 +152,10 @@ class _HomeViewState extends State<HomeView> {
               ),
               Card(
                 child: ListTile(
-                  leading: Icon(Icons.fastfood, size: 28,),
+                  leading: Icon(
+                    Icons.fastfood,
+                    size: 28,
+                  ),
                   title: Text('Donny\'s'),
                   subtitle: Text('Drinks and food'),
                   trailing: Icon(Icons.more_vert),
@@ -154,7 +163,10 @@ class _HomeViewState extends State<HomeView> {
               ),
               Card(
                 child: ListTile(
-                  leading: Icon(Icons.fastfood, size: 28,),
+                  leading: Icon(
+                    Icons.fastfood,
+                    size: 28,
+                  ),
                   title: Text('Donny\'s'),
                   subtitle: Text('Drinks and food'),
                   trailing: Icon(Icons.more_vert),
@@ -162,7 +174,10 @@ class _HomeViewState extends State<HomeView> {
               ),
               Card(
                 child: ListTile(
-                  leading: Icon(Icons.fastfood, size: 28,),
+                  leading: Icon(
+                    Icons.fastfood,
+                    size: 28,
+                  ),
                   title: Text('Donny\'s'),
                   subtitle: Text('Drinks and food'),
                   trailing: Icon(Icons.more_vert),
@@ -170,7 +185,10 @@ class _HomeViewState extends State<HomeView> {
               ),
               Card(
                 child: ListTile(
-                  leading: Icon(Icons.fastfood, size: 28,),
+                  leading: Icon(
+                    Icons.fastfood,
+                    size: 28,
+                  ),
                   title: Text('Donny\'s'),
                   subtitle: Text('Drinks and food'),
                   trailing: Icon(Icons.more_vert),
@@ -178,7 +196,10 @@ class _HomeViewState extends State<HomeView> {
               ),
               Card(
                 child: ListTile(
-                  leading: Icon(Icons.fastfood, size: 28,),
+                  leading: Icon(
+                    Icons.fastfood,
+                    size: 28,
+                  ),
                   title: Text('Donny\'s'),
                   subtitle: Text('Drinks and food'),
                   trailing: Icon(Icons.more_vert),

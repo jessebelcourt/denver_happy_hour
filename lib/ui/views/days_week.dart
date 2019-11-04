@@ -1,10 +1,10 @@
-import 'package:denver_happy_hour/ui/models/selected_days_model.dart';
+import 'package:denver_happy_hour/ui/models/menu_model.dart';
 import 'package:flutter/material.dart';
 
 class SelectableWidget extends StatefulWidget {
-  final SelectedDaysModel selectedDays; //Initialize selectable widget state.
+  MenuModel menu; //Initialize selectable widget state.
 
-  SelectableWidget(this.selectedDays);
+  SelectableWidget(this.menu);
 
   _SelectableWidgetState createState() => _SelectableWidgetState();
 }
@@ -46,42 +46,43 @@ class _SelectableWidgetState extends State<SelectableWidget> {
   Expanded _buildExpandedDaySelector(String day) {
     Color backgroundColor = Colors.black;
 
-    if (day == 'Sun' && widget.selectedDays.monday) {
+    if (day == 'Sun' && widget.menu.monday) {
       backgroundColor = Colors.greenAccent;
-    } else if (day == 'Mon' && widget.selectedDays.tuesday) {
+    } else if (day == 'Mon' && widget.menu.tuesday) {
       backgroundColor = Colors.greenAccent;
-    } else if (day == 'Tue' && widget.selectedDays.wednesday) {
+    } else if (day == 'Tue' && widget.menu.wednesday) {
       backgroundColor = Colors.greenAccent;
-    } else if (day == 'Wed' && widget.selectedDays.thursday) {
+    } else if (day == 'Wed' && widget.menu.thursday) {
       backgroundColor = Colors.greenAccent;
-    } else if (day == 'Thu' && widget.selectedDays.friday) {
+    } else if (day == 'Thu' && widget.menu.friday) {
       backgroundColor = Colors.greenAccent;
-    } else if (day == 'Fri' && widget.selectedDays.saturday) {
+    } else if (day == 'Fri' && widget.menu.saturday) {
       backgroundColor = Colors.greenAccent;
-    } else if (day == 'Sat' && widget.selectedDays.sunday) {
+    } else if (day == 'Sat' && widget.menu.sunday) {
       backgroundColor = Colors.greenAccent;
     }
 
     return Expanded(
       child: GestureDetector(
         onTap: () {
-          setState(() {
-            if (day == 'Sun') {
-              widget.selectedDays.monday = !widget.selectedDays.monday;
-            } else if (day == 'Mon') {
-              widget.selectedDays.tuesday = !widget.selectedDays.tuesday;
-            } else if (day == 'Tue') {
-              widget.selectedDays.wednesday = !widget.selectedDays.wednesday;
-            } else if (day == 'Wed') {
-              widget.selectedDays.thursday = !widget.selectedDays.thursday;
-            } else if (day == 'Thu') {
-              widget.selectedDays.friday = !widget.selectedDays.friday;
-            } else if (day == 'Fri') {
-              widget.selectedDays.saturday = !widget.selectedDays.saturday;
-            } else if (day == 'Sat') {
-              widget.selectedDays.sunday = !widget.selectedDays.sunday;
-            }
-          });
+          // this.updateDaysOfWeek();
+          // setState(() {
+          //   if (day == 'Sun') {
+          //     widget.menu.monday = !widget.menu.monday;
+          //   } else if (day == 'Mon') {
+          //     widget.menu.tuesday = !widget.menu.tuesday;
+          //   } else if (day == 'Tue') {
+          //     widget.menu.wednesday = !widget.menu.wednesday;
+          //   } else if (day == 'Wed') {
+          //     widget.menu.thursday = !widget.menu.thursday;
+          //   } else if (day == 'Thu') {
+          //     widget.menu.friday = !widget.menu.friday;
+          //   } else if (day == 'Fri') {
+          //     widget.menu.saturday = !widget.menu.saturday;
+          //   } else if (day == 'Sat') {
+          //     widget.menu.sunday = !widget.menu.sunday;
+          //   }
+          // });
         },
         child: Container(
           child: Text(
