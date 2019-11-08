@@ -5,8 +5,9 @@ import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 class DateTimePicker extends StatelessWidget {
   MenuModel menu;
   Function updateStartTime;
+  Function updateEndTime;
 
-  DateTimePicker(this.menu, this.updateStartTime);
+  DateTimePicker(this.menu, this.updateStartTime, this.updateEndTime);
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +65,7 @@ class DateTimePicker extends StatelessWidget {
                     // setState(() {
                     //   widget.menu.endTime = '${time.hour}:${time.minute}';
                     // });
+                    this.updateEndTime('${time.hour} : ${time.minute}');
                   },
                   currentTime: DateTime.now(),
                   locale: LocaleType.en,

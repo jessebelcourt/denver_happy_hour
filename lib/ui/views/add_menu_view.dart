@@ -24,6 +24,14 @@ class _AddMenuViewState extends State<AddMenuView> {
   void updateStartTime(String start) {
     setState(() {
       this.menu.startTime = start;
+      print(start);
+    });
+  }
+
+  void updateEndTime(String end) {
+    setState(() {
+      this.menu.endTime = end;
+      print(end);
     });
   }
 
@@ -60,7 +68,7 @@ class _AddMenuViewState extends State<AddMenuView> {
             ),
             // DaysWeekView(),
             SelectableWidget(menu),
-            DateTimePicker(menu, updateStartTime),
+            DateTimePicker(menu, updateStartTime, updateEndTime),
             RaisedButton(
               color: Colors.greenAccent,
               textColor: Colors.white,
