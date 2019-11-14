@@ -5,7 +5,6 @@ import 'dart:async';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
 class DateTimePicker extends StatelessWidget {
-
   MenuModel menu;
   Function updateStartTime;
 
@@ -67,20 +66,22 @@ class DateTimePicker extends StatelessWidget {
     );
   }
 
-  RaisedButton _buildStartEndButtons(BuildContext context) {
-    return RaisedButton(
-        color: Colors.white,
-        child: Text(
-          'Starts: ',
-        ),
-        onPressed: () {
-          DatePicker.showTimePicker(context,
-              theme: DatePickerTheme(containerHeight: 200.0),
-              showTitleActions: true, onConfirm: (time) {
-            print('confirm $time');
-            this.updateStartTime('${time.hour} : ${time.minute}');
-          }, currentTime: DateTime.now(), locale: LocaleType.en);
-        });
+  Container _buildStartEndButtons(BuildContext context) {
+    return Container(
+      child: RaisedButton(
+          color: Colors.white,
+          child: Text(
+            'Starts: ',
+          ),
+          onPressed: () {
+            DatePicker.showTimePicker(context,
+                theme: DatePickerTheme(containerHeight: 200.0),
+                showTitleActions: true, onConfirm: (time) {
+              print('confirm $time');
+              this.updateStartTime('${time.hour} : ${time.minute}');
+            }, currentTime: DateTime.now(), locale: LocaleType.en);
+          }),
+    );
   }
 
   Container _buildTimeRange({String starts}) {
@@ -93,11 +94,7 @@ class DateTimePicker extends StatelessWidget {
       child: Text(
         starts,
         style: TextStyle(fontWeight: FontWeight.w500),
-      ), //defaultTime = timeOne
+      ),
     );
   }
 }
-
-//Issues: 1.) Need to format time in Time Picker.
-//        2.) Encapsulate function, pass timeOne, timeTwo into respective arguments.
-//        3.) Style accordingly
