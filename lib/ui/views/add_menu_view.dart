@@ -79,7 +79,8 @@ class _AddMenuViewState extends State<AddMenuView> {
               color: Colors.red,
               child: Text('Submit'),
               onPressed: () {
-                print('menu: ${this.menu}');
+                Map <String, dynamic>data = {'firstname' : 'Johnny'};
+                print('menu: ${this.menu}');                
                 // api.addMenu(menu)
               },
             )
