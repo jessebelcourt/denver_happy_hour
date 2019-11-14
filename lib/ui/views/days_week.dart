@@ -1,26 +1,16 @@
-import 'package:denver_happy_hour/ui/models/selected_days_model.dart';
 import 'package:flutter/material.dart';
 
-class SelectableWidget extends StatefulWidget {
-  final SelectedDaysModel selectedDays; //Initialize selectable widget state.
+import '../models/menu_model.dart';
 
-  SelectableWidget(this.selectedDays);
+class SelectableWidget extends StatelessWidget {
+  final MenuModel menu; //Initialize selectable widget state.
+  final Function daysOfWeek;
 
-  _SelectableWidgetState createState() => _SelectableWidgetState();
-}
-
-class _SelectableWidgetState extends State<SelectableWidget> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  // bool isSelected = false; //initialize boolean
-  // void _isSelected() {
-  //   //Write function to change boolean to true and change state of boolean.
-  //   setState(() {
-  //     isSelected = !isSelected;
-  //   });
+  SelectableWidget(this.menu, this.daysOfWeek);
+ 
+  // @override
+  // void initState() {
+  //   super.initState();
   // }
 
   @override
@@ -46,42 +36,43 @@ class _SelectableWidgetState extends State<SelectableWidget> {
   Expanded _buildExpandedDaySelector(String day) {
     Color backgroundColor = Colors.black;
 
-    if (day == 'Sun' && widget.selectedDays.monday) {
+    if (day == 'Mon' && menu.monday) {
       backgroundColor = Colors.greenAccent;
-    } else if (day == 'Mon' && widget.selectedDays.tuesday) {
+    } else if (day == 'Tue' && menu.tuesday) {
       backgroundColor = Colors.greenAccent;
-    } else if (day == 'Tue' && widget.selectedDays.wednesday) {
+    } else if (day == 'Wed' && menu.wednesday) {
       backgroundColor = Colors.greenAccent;
-    } else if (day == 'Wed' && widget.selectedDays.thursday) {
+    } else if (day == 'Thu' && menu.thursday) {
       backgroundColor = Colors.greenAccent;
-    } else if (day == 'Thu' && widget.selectedDays.friday) {
+    } else if (day == 'Fri' && menu.friday) {
       backgroundColor = Colors.greenAccent;
-    } else if (day == 'Fri' && widget.selectedDays.saturday) {
+    } else if (day == 'Sat' && menu.saturday) {
       backgroundColor = Colors.greenAccent;
-    } else if (day == 'Sat' && widget.selectedDays.sunday) {
+    } else if (day == 'Sun' && menu.sunday) {
       backgroundColor = Colors.greenAccent;
     }
 
     return Expanded(
       child: GestureDetector(
         onTap: () {
-          setState(() {
-            if (day == 'Sun') {
-              widget.selectedDays.monday = !widget.selectedDays.monday;
-            } else if (day == 'Mon') {
-              widget.selectedDays.tuesday = !widget.selectedDays.tuesday;
-            } else if (day == 'Tue') {
-              widget.selectedDays.wednesday = !widget.selectedDays.wednesday;
-            } else if (day == 'Wed') {
-              widget.selectedDays.thursday = !widget.selectedDays.thursday;
-            } else if (day == 'Thu') {
-              widget.selectedDays.friday = !widget.selectedDays.friday;
-            } else if (day == 'Fri') {
-              widget.selectedDays.saturday = !widget.selectedDays.saturday;
-            } else if (day == 'Sat') {
-              widget.selectedDays.sunday = !widget.selectedDays.sunday;
-            }
-          });
+          this.daysOfWeek(day);
+          // setState(() {
+          //   if (day == 'Mon') {
+          //     widget.selectedDays.monday = !widget.selectedDays.monday;
+          //   } else if (day == 'Tue') {
+          //     widget.selectedDays.tuesday = !widget.selectedDays.tuesday;
+          //   } else if (day == 'Wed') {
+          //     widget.selectedDays.wednesday = !widget.selectedDays.wednesday;
+          //   } else if (day == 'Thu') {
+          //     widget.selectedDays.thursday = !widget.selectedDays.thursday;
+          //   } else if (day == 'Fri') {
+          //     widget.selectedDays.friday = !widget.selectedDays.friday;
+          //   } else if (day == 'Sat') {
+          //     widget.selectedDays.saturday = !widget.selectedDays.saturday;
+          //   } else if (day == 'Sun') {
+          //     widget.selectedDays.sunday = !widget.selectedDays.sunday;
+          //   }
+          // });
         },
         child: Container(
           child: Text(
