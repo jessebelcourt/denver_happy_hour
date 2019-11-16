@@ -80,6 +80,7 @@ class _AddMenuViewState extends State<AddMenuView> {
             child: Text('Submit'),
             onPressed: () {
               Map <String, dynamic> data = {};
+              print('menu: ${this.menu}');
             },
           )
         ])),
