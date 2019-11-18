@@ -13,13 +13,27 @@ class DateTimePicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: <Widget>[
-          _buildTimeRange(starts: this.menu.startTime, ends: this.menu.endTime),
-          _buildStartEndButtons(context),
-        ],
-      ),
+    return Column(
+      children: <Widget>[
+        Container(
+          padding: EdgeInsets.all(10.0),
+          margin: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+          child: Text(
+            'What are the hours?',
+            style: TextStyle(fontSize: 18),
+          ),
+        ),
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+          child: Column(
+            children: <Widget>[
+              _buildTimeRange(
+                  starts: this.menu.startTime, ends: this.menu.endTime),
+              _buildStartEndButtons(context),
+            ],
+          ),
+        ),
+      ],
     );
     // Container(
     //   decoration: BoxDecoration(color: Colors.greenAccent),
@@ -62,7 +76,7 @@ class DateTimePicker extends StatelessWidget {
         children: <Widget>[
           Expanded(
               child: RaisedButton(
-            color: Colors.greenAccent,
+            color: Colors.black,
             onPressed: () {
               DatePicker.showTimePicker(context,
                   theme: DatePickerTheme(containerHeight: 200.0),
@@ -78,7 +92,7 @@ class DateTimePicker extends StatelessWidget {
           )),
           Expanded(
               child: RaisedButton(
-            color: Colors.greenAccent,
+            color: Colors.black,
             onPressed: () {
               DatePicker.showTimePicker(context,
                   theme: DatePickerTheme(containerHeight: 200.0),

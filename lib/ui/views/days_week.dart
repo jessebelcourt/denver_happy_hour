@@ -7,7 +7,7 @@ class SelectableWidget extends StatelessWidget {
   final Function daysOfWeek;
 
   SelectableWidget(this.menu, this.daysOfWeek);
- 
+
   // @override
   // void initState() {
   //   super.initState();
@@ -15,21 +15,33 @@ class SelectableWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(10.0),
-      color: Colors.grey,
-      height: 40.0,
-      child: Row(
-        children: <Widget>[
-          _buildExpandedDaySelector('Sun'),
-          _buildExpandedDaySelector('Mon'),
-          _buildExpandedDaySelector('Tue'),
-          _buildExpandedDaySelector('Wed'),
-          _buildExpandedDaySelector('Thu'),
-          _buildExpandedDaySelector('Fri'),
-          _buildExpandedDaySelector('Sat'),
-        ],
-      ),
+    return Column(
+      children: <Widget>[
+        Container(
+          padding: EdgeInsets.all(10.0),
+          margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          child: Text(
+            'When is happy hour available?',
+            style: TextStyle(fontSize: 18),
+          ),
+        ),
+        Container(
+          margin: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+          color: Colors.grey,
+          height: 80.0,
+          child: Row(
+            children: <Widget>[
+              _buildExpandedDaySelector('Sun'),
+              _buildExpandedDaySelector('Mon'),
+              _buildExpandedDaySelector('Tue'),
+              _buildExpandedDaySelector('Wed'),
+              _buildExpandedDaySelector('Thu'),
+              _buildExpandedDaySelector('Fri'),
+              _buildExpandedDaySelector('Sat'),
+            ],
+          ),
+        ),
+      ],
     );
   }
 
@@ -37,19 +49,19 @@ class SelectableWidget extends StatelessWidget {
     Color backgroundColor = Colors.black;
 
     if (day == 'Mon' && menu.monday) {
-      backgroundColor = Colors.greenAccent;
+      backgroundColor = Colors.redAccent;
     } else if (day == 'Tue' && menu.tuesday) {
-      backgroundColor = Colors.greenAccent;
+      backgroundColor = Colors.redAccent;
     } else if (day == 'Wed' && menu.wednesday) {
-      backgroundColor = Colors.greenAccent;
+      backgroundColor = Colors.redAccent;
     } else if (day == 'Thu' && menu.thursday) {
-      backgroundColor = Colors.greenAccent;
+      backgroundColor = Colors.redAccent;
     } else if (day == 'Fri' && menu.friday) {
-      backgroundColor = Colors.greenAccent;
+      backgroundColor = Colors.redAccent;
     } else if (day == 'Sat' && menu.saturday) {
-      backgroundColor = Colors.greenAccent;
+      backgroundColor = Colors.redAccent;
     } else if (day == 'Sun' && menu.sunday) {
-      backgroundColor = Colors.greenAccent;
+      backgroundColor = Colors.redAccent;
     }
 
     return Expanded(
@@ -77,7 +89,10 @@ class SelectableWidget extends StatelessWidget {
         child: Container(
           child: Text(
             day,
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontFamily: 'Times New Roman'),
+            style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w700,
+                fontFamily: 'Times New Roman'),
           ),
           color: backgroundColor,
           alignment: Alignment.center,

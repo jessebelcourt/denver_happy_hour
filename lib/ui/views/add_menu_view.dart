@@ -60,15 +60,46 @@ class _AddMenuViewState extends State<AddMenuView> {
         title: Text('Restaurant Info'),
       ),
       body: Container(
+        decoration: BoxDecoration(color: Colors.white54),
         padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
         child: (Column(children: <Widget>[
           TextFormField(
             decoration: InputDecoration(labelText: 'Enter Restaurant Name'),
           ),
-          SelectableWidget(menu, updateDaysOfWeek),
-          DateTimePicker(menu, updateStartTime, updateEndTime),
+          Container(
+            child: SelectableWidget(menu, updateDaysOfWeek),
+            margin: EdgeInsets.all(10.0),
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.orangeAccent,
+                  blurRadius: 5,
+                ),
+              ],
+              border: Border.all(color: Colors.black),
+              borderRadius: BorderRadius.all(
+                Radius.circular(25.0),
+              ),
+            ),
+          ),
+          Container(
+            child: DateTimePicker(menu, updateStartTime, updateEndTime),
+            margin: EdgeInsets.all(10.0),
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.orangeAccent,
+                  blurRadius: 5,
+                ),
+              ],
+              border: Border.all(color: Colors.black),
+              borderRadius: BorderRadius.all(
+                Radius.circular(25.0),
+              ),
+            ),
+          ),
           RaisedButton(
-            color: Colors.greenAccent,
+            color: Colors.black,
             textColor: Colors.white,
             child: Text('Add Menu Photo'),
             onPressed: () {
@@ -76,10 +107,13 @@ class _AddMenuViewState extends State<AddMenuView> {
             },
           ),
           FlatButton(
-            color: Colors.red,
-            child: Text('Submit'),
+            color: Colors.black,
+            child: Text(
+              'Submit',
+              style: TextStyle(color: Colors.white),
+            ),
             onPressed: () {
-              Map <String, dynamic> data = {};
+              Map<String, dynamic> data = {};
               print('menu: ${this.menu}');
             },
           )
