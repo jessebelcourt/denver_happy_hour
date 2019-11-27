@@ -63,6 +63,17 @@ class _AddMenuViewState extends State<AddMenuView> {
         decoration: BoxDecoration(color: Colors.white54),
         padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
         child: (Column(children: <Widget>[
+          Container(           
+            padding: EdgeInsets.only(bottom: 20.0),
+            child: Text(
+              'Restaurant Info',
+              style: TextStyle(fontSize: 25.0),
+            ),
+          ),
+          Text(
+            'What is the name of the restaurant?',
+            style: TextStyle(fontSize: 18.0),
+          ),
           TextFormField(
             decoration: InputDecoration(labelText: 'Enter Restaurant Name'),
           ),
