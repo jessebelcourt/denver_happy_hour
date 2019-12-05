@@ -12,6 +12,8 @@ class AddMenuView extends StatefulWidget {
 
 class _AddMenuViewState extends State<AddMenuView> {
   MenuModel menu;
+  //Retrieve text from restaurantName TextField
+  TextEditingController controller = TextEditingController();
 
   @override
   void initState() {
@@ -57,77 +59,74 @@ class _AddMenuViewState extends State<AddMenuView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Restaurant Info'),
+        title: Text('Restaurant Information'),
       ),
       body: Container(
         decoration: BoxDecoration(color: Colors.white54),
         padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
         child: (Column(children: <Widget>[
-          Container(           
-            padding: EdgeInsets.only(bottom: 20.0),
-            child: Text(
-              'Restaurant Info',
-              style: TextStyle(fontSize: 25.0),
-            ),
+          TextField(
+            controller: controller,
+            decoration: InputDecoration(
+                labelText: 'Enter Restaurant Name',
+                prefixIcon: Icon(Icons.add_circle),
+                border: OutlineInputBorder(
+                  borderRadius: const BorderRadius.all(
+                    const Radius.circular(25.0),
+                  ),
+                )),
           ),
-          Text(
-            'What is the name of the restaurant?',
-            style: TextStyle(fontSize: 18.0),
-          ),
-          TextFormField(
-            decoration: InputDecoration(labelText: 'Enter Restaurant Name'),
-          ),
-          Container(
-            child: SelectableWidget(menu, updateDaysOfWeek),
-            margin: EdgeInsets.all(10.0),
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.orangeAccent,
-                  blurRadius: 5,
-                ),
-              ],
-              border: Border.all(color: Colors.black),
-              borderRadius: BorderRadius.all(
-                Radius.circular(25.0),
-              ),
-            ),
-          ),
-          Container(
-            child: DateTimePicker(menu, updateStartTime, updateEndTime),
-            margin: EdgeInsets.all(10.0),
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.orangeAccent,
-                  blurRadius: 5,
-                ),
-              ],
-              border: Border.all(color: Colors.black),
-              borderRadius: BorderRadius.all(
-                Radius.circular(25.0),
-              ),
-            ),
-          ),
-          RaisedButton(
-            color: Colors.black,
-            textColor: Colors.white,
-            child: Text('Add Menu Photo'),
-            onPressed: () {
-              //Navigate to upload photo
-            },
-          ),
-          FlatButton(
-            color: Colors.black,
-            child: Text(
-              'Submit',
-              style: TextStyle(color: Colors.white),
-            ),
-            onPressed: () {
-              Map<String, dynamic> data = {};
-              print('menu: ${this.menu}');
-            },
-          )
+          // Container(
+          //   child: SelectableWidget(menu, updateDaysOfWeek),
+          //   margin: EdgeInsets.all(10.0),
+          //   decoration: BoxDecoration(
+          //     boxShadow: [
+          //       BoxShadow(
+          //         color: Colors.greenAccent,
+          //         blurRadius: 5,
+          //       ),
+          //     ],
+          //     border: Border.all(color: Colors.black),
+          //     borderRadius: BorderRadius.all(
+          //       Radius.circular(25.0),
+          //     ),
+          //   ),
+          // ),
+          // Container(
+          //   child: DateTimePicker(menu, updateStartTime, updateEndTime),
+          //   margin: EdgeInsets.all(10.0),
+          //   decoration: BoxDecoration(
+          //     boxShadow: [
+          //       BoxShadow(
+          //         color: Colors.greenAccent,
+          //         blurRadius: 5,
+          //       ),
+          //     ],
+          //     border: Border.all(color: Colors.black),
+          //     borderRadius: BorderRadius.all(
+          //       Radius.circular(25.0),
+          //     ),
+          //   ),
+          // ),
+          // RaisedButton(
+          //   color: Colors.black,
+          //   textColor: Colors.white,
+          //   child: Text('Add Menu Photo'),
+          //   onPressed: () {
+          //     //Navigate to upload photo
+          //   },
+          // ),
+          // FlatButton(
+          //   color: Colors.black,
+          //   child: Text(
+          //     'Submit',
+          //     style: TextStyle(color: Colors.white),
+          //   ),
+          //   onPressed: () {
+          //     Map<String, dynamic> data = {};
+          //     print('menu: ${this.menu}');
+          //   },
+          // )
         ])),
       ),
     );
