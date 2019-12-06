@@ -13,7 +13,8 @@ class AddMenuView extends StatefulWidget {
 class _AddMenuViewState extends State<AddMenuView> {
   MenuModel menu;
   //Retrieve text from restaurantName TextField
-  TextEditingController controller = TextEditingController();
+  TextEditingController _controller = new TextEditingController();
+  bool _validate = false;
 
   @override
   void initState() {
@@ -21,6 +22,11 @@ class _AddMenuViewState extends State<AddMenuView> {
     setState(() {
       menu = new MenuModel();
     });
+    _controller.addListener(_currentText);
+  }
+
+  void _currentText () {   
+    print('Current text value: ${_controller.text}');    
   }
 
   void updateStartTime(String start) {
@@ -66,15 +72,16 @@ class _AddMenuViewState extends State<AddMenuView> {
         padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
         child: (Column(children: <Widget>[
           TextField(
-            controller: controller,
+            controller: _controller,            
             decoration: InputDecoration(
-                labelText: 'Enter Restaurant Name',
+                labelText: 'Enter Restaurant Name', 
+                errorText: _validate ? 'Please enter a value' : null,                                             
                 prefixIcon: Icon(Icons.add_circle),
                 border: OutlineInputBorder(
                   borderRadius: const BorderRadius.all(
                     const Radius.circular(25.0),
                   ),
-                )),
+                ),),
           ),
           // Container(
           //   child: SelectableWidget(menu, updateDaysOfWeek),
@@ -116,17 +123,20 @@ class _AddMenuViewState extends State<AddMenuView> {
           //     //Navigate to upload photo
           //   },
           // ),
-          // FlatButton(
-          //   color: Colors.black,
-          //   child: Text(
-          //     'Submit',
-          //     style: TextStyle(color: Colors.white),
-          //   ),
-          //   onPressed: () {
-          //     Map<String, dynamic> data = {};
-          //     print('menu: ${this.menu}');
-          //   },
-          // )
+          FlatButton(
+            color: Colors.black,
+            child: Text(
+              'Submit',
+              style: TextStyle(color: Colors.white),
+            ),
+            onPressed: () {
+              Map<String, dynamic> data = {};
+              print('menu: ${this.menu}');
+              setState(() {
+                _controller.text.isEmpty ? _validate = true : _validate = false;
+              });
+            },
+          )
         ])),
       ),
     );
