@@ -5,6 +5,7 @@ import '../models/menu_model.dart';
 class SelectableWidget extends StatelessWidget {
   final MenuModel menu; //Initialize selectable widget state.
   final Function daysOfWeek;
+  final color = Color(0xFFf070A1);
 
   SelectableWidget(this.menu, this.daysOfWeek);
 
@@ -49,19 +50,19 @@ class SelectableWidget extends StatelessWidget {
     Color backgroundColor = Colors.black;
 
     if (day == 'Mon' && menu.monday) {
-      backgroundColor = Colors.redAccent;
+      backgroundColor = color;
     } else if (day == 'Tue' && menu.tuesday) {
-      backgroundColor = Colors.redAccent;
+      backgroundColor = color;
     } else if (day == 'Wed' && menu.wednesday) {
-      backgroundColor = Colors.redAccent;
+      backgroundColor = color;
     } else if (day == 'Thu' && menu.thursday) {
-      backgroundColor = Colors.redAccent;
+      backgroundColor = color;
     } else if (day == 'Fri' && menu.friday) {
-      backgroundColor = Colors.redAccent;
+      backgroundColor = color;
     } else if (day == 'Sat' && menu.saturday) {
-      backgroundColor = Colors.redAccent;
+      backgroundColor = color;
     } else if (day == 'Sun' && menu.sunday) {
-      backgroundColor = Colors.redAccent;
+      backgroundColor = color;
     }
 
     return Expanded(

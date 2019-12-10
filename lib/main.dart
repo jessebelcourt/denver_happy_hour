@@ -12,11 +12,13 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
+  final color = Color(0xFF16ffbd);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primaryColor: Colors.greenAccent,
+        primaryColor: color,
         accentColor: Colors.black,
       ),
       initialRoute: '/',

@@ -15,6 +15,7 @@ class _AddMenuViewState extends State<AddMenuView> {
   //Retrieve text from restaurantName TextField
   TextEditingController _controller = new TextEditingController();
   bool _validate = false;
+  final color = Color(0xFF16ffbd);
 
   @override
   void initState() {
@@ -77,52 +78,52 @@ class _AddMenuViewState extends State<AddMenuView> {
                 labelText: 'Enter Restaurant Name', 
                 errorText: _validate ? 'Please enter a value' : null,                                             
                 prefixIcon: Icon(Icons.add_circle),
-                border: OutlineInputBorder(
+                enabledBorder: OutlineInputBorder( borderSide: BorderSide(color: Colors.black),
                   borderRadius: const BorderRadius.all(
                     const Radius.circular(25.0),
                   ),
                 ),),
           ),
-          // Container(
-          //   child: SelectableWidget(menu, updateDaysOfWeek),
-          //   margin: EdgeInsets.all(10.0),
-          //   decoration: BoxDecoration(
-          //     boxShadow: [
-          //       BoxShadow(
-          //         color: Colors.greenAccent,
-          //         blurRadius: 5,
-          //       ),
-          //     ],
-          //     border: Border.all(color: Colors.black),
-          //     borderRadius: BorderRadius.all(
-          //       Radius.circular(25.0),
-          //     ),
-          //   ),
-          // ),
-          // Container(
-          //   child: DateTimePicker(menu, updateStartTime, updateEndTime),
-          //   margin: EdgeInsets.all(10.0),
-          //   decoration: BoxDecoration(
-          //     boxShadow: [
-          //       BoxShadow(
-          //         color: Colors.greenAccent,
-          //         blurRadius: 5,
-          //       ),
-          //     ],
-          //     border: Border.all(color: Colors.black),
-          //     borderRadius: BorderRadius.all(
-          //       Radius.circular(25.0),
-          //     ),
-          //   ),
-          // ),
-          // RaisedButton(
-          //   color: Colors.black,
-          //   textColor: Colors.white,
-          //   child: Text('Add Menu Photo'),
-          //   onPressed: () {
-          //     //Navigate to upload photo
-          //   },
-          // ),
+          Container(
+            child: SelectableWidget(menu, updateDaysOfWeek),
+            margin: EdgeInsets.all(10.0),
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: color,
+                  blurRadius: 5,
+                ),
+              ],
+              border: Border.all(color: Colors.black),
+              borderRadius: BorderRadius.all(
+                Radius.circular(25.0),
+              ),
+            ),
+          ),
+          Container(
+            child: DateTimePicker(menu, updateStartTime, updateEndTime),
+            margin: EdgeInsets.all(10.0),
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: color,
+                  blurRadius: 5,
+                ),
+              ],
+              border: Border.all(color: Colors.black),
+              borderRadius: BorderRadius.all(
+                Radius.circular(25.0),
+              ),
+            ),
+          ),
+          RaisedButton(
+            color: Colors.black,
+            textColor: Colors.white,
+            child: Text('Add Menu Photo'),
+            onPressed: () {
+              //Navigate to upload photo
+            },
+          ),
           FlatButton(
             color: Colors.black,
             child: Text(
