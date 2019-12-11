@@ -11,9 +11,10 @@ class AddMenuView extends StatefulWidget {
 }
 
 class _AddMenuViewState extends State<AddMenuView> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   MenuModel menu;
   //Retrieve text from restaurantName TextField
-  TextEditingController _controller = new TextEditingController();
+  TextEditingController _restNameController = TextEditingController();
   bool _validate = false;
   final color = Color(0xFF16ffbd);
 
@@ -22,12 +23,20 @@ class _AddMenuViewState extends State<AddMenuView> {
     super.initState();
     setState(() {
       menu = new MenuModel();
-    });
-    _controller.addListener(_currentText);
+    }); 
+    _restNameController.addListener(_currentText);    
   }
 
-  void _currentText () {   
-    print('Current text value: ${_controller.text}');    
+  void _currentText() {
+    print('Current text value: ${_restNameController.text}');
+  }
+
+  String _validateRestName(String value) {
+    if(value.isEmpty) {
+      return 'Please enter a value';
+    } else {
+      return null;
+    }
   }
 
   void updateStartTime(String start) {
@@ -71,74 +80,89 @@ class _AddMenuViewState extends State<AddMenuView> {
       body: Container(
         decoration: BoxDecoration(color: Colors.white54),
         padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-        child: (Column(children: <Widget>[
-          TextField(
-            controller: _controller,            
-            decoration: InputDecoration(
-                labelText: 'Enter Restaurant Name', 
-                errorText: _validate ? 'Please enter a value' : null,                                             
+        child: Form(
+          key: _formKey,
+          child: (Column(children: <Widget>[
+            TextFormField(     
+              controller: _restNameController,
+              validator: (String value) {
+                if(value.isEmpty) {
+                  return 'Please enter a value';
+                } else {
+                  return null;
+                }
+              },  
+              onSaved: (value) {
+                setState(() {
+                 //
+                });
+              },    
+              decoration: InputDecoration(                
+                labelText: 'Enter Restaurant Name',                
                 prefixIcon: Icon(Icons.add_circle),
-                enabledBorder: OutlineInputBorder( borderSide: BorderSide(color: Colors.black),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black),
                   borderRadius: const BorderRadius.all(
                     const Radius.circular(25.0),
                   ),
-                ),),
-          ),
-          Container(
-            child: SelectableWidget(menu, updateDaysOfWeek),
-            margin: EdgeInsets.all(10.0),
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: color,
-                  blurRadius: 5,
                 ),
-              ],
-              border: Border.all(color: Colors.black),
-              borderRadius: BorderRadius.all(
-                Radius.circular(25.0),
+              ),
+              // validator: ,             
+            ),
+            // Container(
+            //   child: SelectableWidget(menu, updateDaysOfWeek),
+            //   margin: EdgeInsets.all(10.0),
+            //   decoration: BoxDecoration(
+            //     boxShadow: [
+            //       BoxShadow(
+            //         color: color,          
+            //       ),
+            //     ],
+            //     border: Border.all(color: Colors.black),
+            //     borderRadius: BorderRadius.all(
+            //       Radius.circular(25.0),
+            //     ),
+            //   ),
+            // ),
+            Container(
+              child: DateTimePicker(menu, updateStartTime, updateEndTime),
+              margin: EdgeInsets.all(10.0),
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: color,                   
+                  ),
+                ],
+                border: Border.all(color: Colors.black),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(25.0),
+                ),
               ),
             ),
-          ),
-          Container(
-            child: DateTimePicker(menu, updateStartTime, updateEndTime),
-            margin: EdgeInsets.all(10.0),
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: color,
-                  blurRadius: 5,
-                ),
-              ],
-              border: Border.all(color: Colors.black),
-              borderRadius: BorderRadius.all(
-                Radius.circular(25.0),
+            // RaisedButton(
+            //   color: Colors.black,
+            //   textColor: Colors.white,
+            //   child: Text('Add Menu Photo'),
+            //   onPressed: () {
+            //     //Navigate to upload photo
+            //   },
+            // ),
+            FlatButton(
+              color: Colors.black,
+              child: Text(
+                'Submit',
+                style: TextStyle(color: Colors.white),
               ),
-            ),
-          ),
-          RaisedButton(
-            color: Colors.black,
-            textColor: Colors.white,
-            child: Text('Add Menu Photo'),
-            onPressed: () {
-              //Navigate to upload photo
-            },
-          ),
-          FlatButton(
-            color: Colors.black,
-            child: Text(
-              'Submit',
-              style: TextStyle(color: Colors.white),
-            ),
-            onPressed: () {
-              Map<String, dynamic> data = {};
-              print('menu: ${this.menu}');
-              setState(() {
-                _controller.text.isEmpty ? _validate = true : _validate = false;
-              });
-            },
-          )
-        ])),
+              onPressed: () {
+                Map<String, dynamic> data = {};
+                print('menu: ${this.menu}');   
+                if (_formKey.currentState.validate()){
+                  //
+                }              
+              },
+            )
+          ])),
+        ),
       ),
     );
   }
