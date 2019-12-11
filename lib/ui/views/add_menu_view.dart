@@ -31,14 +31,6 @@ class _AddMenuViewState extends State<AddMenuView> {
     print('Current text value: ${_restNameController.text}');
   }
 
-  String _validateRestName(String value) {
-    if(value.isEmpty) {
-      return 'Please enter a value';
-    } else {
-      return null;
-    }
-  }
-
   void updateStartTime(String start) {
     setState(() {
       this.menu.startTime = start;
