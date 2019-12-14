@@ -131,7 +131,9 @@ class _AddMenuViewState extends State<AddMenuView> {
               style: TextStyle(color: Colors.white),
             ),
             onPressed: () {
-              Map<String, dynamic> data = {};                          
+              this.menu.startTime.isEmpty ? print('Value needed') : print('Value exists');
+              //this.menu.startTime.isEmpty ? button.color = Colors.red : button
+              // Map<String, dynamic> data = {};                          
               // setState(() {
               //   _restNameController.text.isEmpty
               //       ? _validate = true

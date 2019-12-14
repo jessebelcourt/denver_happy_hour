@@ -75,7 +75,7 @@ class DateTimePicker extends StatelessWidget {
   }
 
   Container _buildStartEndButtons(BuildContext context) {
-    String errorMessage = 'Please select a time';
+    String errorMsg = 'Please select a time';
 
     if (this.menu.startTime == null) {
       return Container(
