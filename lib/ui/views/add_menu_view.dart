@@ -13,7 +13,7 @@ class AddMenuView extends StatefulWidget {
 class _AddMenuViewState extends State<AddMenuView> {
   MenuModel menu;
   //Retrieve text from restaurantName TextField
-  TextEditingController _controller = new TextEditingController();
+  TextEditingController _restNameController = new TextEditingController();
   bool _validate = false;
   final color = Color(0xFF16ffbd);
 
@@ -23,14 +23,14 @@ class _AddMenuViewState extends State<AddMenuView> {
     setState(() {
       menu = new MenuModel();
     });
-    _controller.addListener(_currentText);
+    _restNameController.addListener(_currentText);
   }
 
-  void _currentText () {   
-    print('Current text value: ${_controller.text}');    
+  void _currentText() {
+    print('Current text value: ${_restNameController.text}');
   }
 
-  void updateStartTime(String start) {
+  void updateStartTime(String start) {   
     setState(() {
       this.menu.startTime = start;
     });
@@ -73,33 +73,34 @@ class _AddMenuViewState extends State<AddMenuView> {
         padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
         child: (Column(children: <Widget>[
           TextField(
-            controller: _controller,            
+            controller: _restNameController,
             decoration: InputDecoration(
-                labelText: 'Enter Restaurant Name', 
-                errorText: _validate ? 'Please enter a value' : null,                                             
-                prefixIcon: Icon(Icons.add_circle),
-                enabledBorder: OutlineInputBorder( borderSide: BorderSide(color: Colors.black),
-                  borderRadius: const BorderRadius.all(
-                    const Radius.circular(25.0),
-                  ),
-                ),),
-          ),
-          Container(
-            child: SelectableWidget(menu, updateDaysOfWeek),
-            margin: EdgeInsets.all(10.0),
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: color,
-                  blurRadius: 5,
+              labelText: 'Enter Restaurant Name',
+              errorText: _validate ? 'Please enter a value' : null,
+              prefixIcon: Icon(Icons.add_circle),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.black),
+                borderRadius: const BorderRadius.all(
+                  const Radius.circular(25.0),
                 ),
-              ],
-              border: Border.all(color: Colors.black),
-              borderRadius: BorderRadius.all(
-                Radius.circular(25.0),
               ),
             ),
           ),
+          // Container(
+          //   child: SelectableWidget(menu, updateDaysOfWeek),
+          //   margin: EdgeInsets.all(10.0),
+          //   decoration: BoxDecoration(
+          //     boxShadow: [
+          //       BoxShadow(
+          //         color: color,
+          //       ),
+          //     ],
+          //     border: Border.all(color: Colors.black),
+          //     borderRadius: BorderRadius.all(
+          //       Radius.circular(25.0),
+          //     ),
+          //   ),
+          // ),
           Container(
             child: DateTimePicker(menu, updateStartTime, updateEndTime),
             margin: EdgeInsets.all(10.0),
@@ -107,7 +108,6 @@ class _AddMenuViewState extends State<AddMenuView> {
               boxShadow: [
                 BoxShadow(
                   color: color,
-                  blurRadius: 5,
                 ),
               ],
               border: Border.all(color: Colors.black),
@@ -116,14 +116,14 @@ class _AddMenuViewState extends State<AddMenuView> {
               ),
             ),
           ),
-          RaisedButton(
-            color: Colors.black,
-            textColor: Colors.white,
-            child: Text('Add Menu Photo'),
-            onPressed: () {
-              //Navigate to upload photo
-            },
-          ),
+          // RaisedButton(
+          //   color: Colors.black,
+          //   textColor: Colors.white,
+          //   child: Text('Add Menu Photo'),
+          //   onPressed: () {
+          //     //Navigate to upload photo
+          //   },
+          // ),
           FlatButton(
             color: Colors.black,
             child: Text(
@@ -131,11 +131,12 @@ class _AddMenuViewState extends State<AddMenuView> {
               style: TextStyle(color: Colors.white),
             ),
             onPressed: () {
-              Map<String, dynamic> data = {};
-              print('menu: ${this.menu}');
-              setState(() {
-                _controller.text.isEmpty ? _validate = true : _validate = false;
-              });
+              Map<String, dynamic> data = {};                          
+              // setState(() {
+              //   _restNameController.text.isEmpty
+              //       ? _validate = true
+              //       : _validate = false;
+              // });
             },
           )
         ])),

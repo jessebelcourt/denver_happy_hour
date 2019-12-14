@@ -9,7 +9,11 @@ class DateTimePicker extends StatelessWidget {
   Function updateStartTime;
   Function updateEndTime;
 
-  DateTimePicker(this.menu, this.updateStartTime, this.updateEndTime);
+  DateTimePicker(
+    this.menu,
+    this.updateStartTime,
+    this.updateEndTime,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -71,62 +75,73 @@ class DateTimePicker extends StatelessWidget {
   }
 
   Container _buildStartEndButtons(BuildContext context) {
-    return Container(
-      child: Row(
-        children: <Widget>[
-          Expanded(
-              child: RaisedButton(
-            color: Colors.black,
-            onPressed: () {
-              DatePicker.showTimePicker(context,
-                  theme: DatePickerTheme(containerHeight: 200.0),
-                  showTitleActions: true, onConfirm: (time) {
-                print('confirm $time');
-                this.updateStartTime('${time.hour} : ${time.minute}');
-              }, currentTime: DateTime.now(), locale: LocaleType.en);
-            },
-            child: Text(
-              'Starts',
-              style: TextStyle(color: Colors.white),
-            ),
-          )),
-          Expanded(
-              child: RaisedButton(
-            color: Colors.black,
-            onPressed: () {
-              DatePicker.showTimePicker(context,
-                  theme: DatePickerTheme(containerHeight: 200.0),
-                  showTitleActions: true, onConfirm: (time) {
-                print('confirm $time');
-                this.updateEndTime('${time.hour} : ${time.minute}');
-              }, currentTime: DateTime.now(), locale: LocaleType.en);
-            },
-            child: Text(
-              'Ends',
-              style: TextStyle(color: Colors.white),
-            ),
-          )),
-        ],
-      ),
+    String errorMessage = 'Please select a time';
 
-      //  Expanded(
-      //   child: RaisedButton(
-      //     color: Colors.greenAccent,
-      //     onPressed: () {
-      //       // DatePicker.showTimePicker(context,
-      //       //     theme: DatePickerTheme(containerHeight: 200.0),
-      //       //     showTitleActions: true, onConfirm: (time) {
-      //       //   print('confirm $time');
-      //       //   this.updateStartTime('${time.hour} : ${time.minute}');
-      //       // }, currentTime: DateTime.now(), locale: LocaleType.en);
-      //     },
-      //     child: Text(
-      //       'Ends',
-      //       style: TextStyle(color: Colors.white),
-      //     ),
-      //   ),
-      // )
-    );
+    if (this.menu.startTime == null) {
+      return Container(
+        child: Row(
+          children: <Widget>[
+            Expanded(
+              child: RaisedButton(
+                color: Colors.red,
+                onPressed: () {
+                  DatePicker.showTimePicker(context,
+                      theme: DatePickerTheme(containerHeight: 200.0),
+                      showTitleActions: true, onConfirm: (time) {
+                    print('confirm $time');
+                    this.updateStartTime('${time.hour} : ${time.minute}');
+                  }, currentTime: DateTime.now(), locale: LocaleType.en);
+                },
+                child: Text(
+                  'Starts',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ),
+            // Expanded(
+            //     child: RaisedButton(
+            //   color: Colors.black,
+            //   onPressed: () {
+            //     DatePicker.showTimePicker(context,
+            //         theme: DatePickerTheme(containerHeight: 200.0),
+            //         showTitleActions: true, onConfirm: (time) {
+            //       print('confirm $time');
+            //       this.updateEndTime('${time.hour} : ${time.minute}');
+            //     }, currentTime: DateTime.now(), locale: LocaleType.en);
+            //   },
+            //   child: Text(
+            //     'Ends',
+            //     style: TextStyle(color: Colors.white),
+            //   ),
+            // )),
+          ],
+        ),                
+      );    
+    } else {
+      return Container(
+        child: Row(
+          children: <Widget>[
+            Expanded(
+              child: RaisedButton(
+                color: Colors.black,
+                onPressed: () {
+                  DatePicker.showTimePicker(context,
+                      theme: DatePickerTheme(containerHeight: 200.0),
+                      showTitleActions: true, onConfirm: (time) {
+                    print('confirm $time');
+                    this.updateStartTime('${time.hour} : ${time.minute}');
+                  }, currentTime: DateTime.now(), locale: LocaleType.en);
+                },
+                child: Text(
+                  'Starts',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+    }
   }
 
   Container _buildTimeRange({String starts, String ends}) {
